@@ -3,7 +3,7 @@
 Note: This is a work in progress. Project configurations can look premature and unsecure, but it'll be fine at a later stage.
 
 ## MongoDb Setup
-Use following docker command to run mongo on local machine.   
+Use following docker command to start mongodb on local machine.   
 
 ```shell
 docker run -d \
@@ -18,6 +18,8 @@ Make sure to put proper DB URL in the application.properties
 ```
 mongodb://mongoadmin:admin123@127.0.0.1/admin
 ```
+
+To have a look at the database. You can use **Studio 3T**
 
 ## APIs
 
