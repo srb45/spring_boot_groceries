@@ -1,0 +1,41 @@
+Id,Name,Description,Category,Price,Available
+1,Apple,Fresh red apples,Fruits,50,100
+2,Banana,Yellow bananas,Fruits,30,75
+3,Bread,Whole wheat bread,Bakery,40,50
+4,Milk,Organic cow milk,Dairy,55,30
+5,Eggs,Farm fresh eggs,Dairy,45,60
+6,Rice,Long-grain basmati rice,Grains,80,200
+7,Pasta,Spaghetti pasta,Pasta,25,100
+8,Olive Oil,Extra virgin olive oil,Condiments,250,40
+9,Salt,Iodized table salt,Condiments,10,150
+10,Sugar,Granulated white sugar,Baking,35,100
+11,Coffee,Ground coffee,Hot Beverages,150,80
+12,Tea,Assam black tea,Hot Beverages,80,120
+13,Chicken,Fresh chicken breast,Meat,180,40
+14,Beef,Lean ground beef,Meat,250,30
+15,Salmon,Atlantic salmon fillet,Seafood,350,25
+16,Yogurt,Greek yogurt,Dairy,60,60
+17,Cheese,Cheddar cheese,Dairy,120,50
+18,Tomato,Fresh vine-ripened tomatoes,Produce,30,80
+19,Cucumber,Crisp cucumbers,Produce,20,100
+20,Lettuce,Green leaf lettuce,Produce,25,70
+21,Potato,Russet potatoes,Produce,40,120
+22,Carrot,Fresh carrots,Produce,15,90
+23,Bell Pepper,Red bell pepper,Produce,35,60
+24,Onion,Yellow onions,Produce,25,100
+25,Garlic,Fresh garlic bulbs,Produce,20,80
+26,Spinach,Fresh spinach leaves,Produce,40,40
+27,Broccoli,Fresh broccoli florets,Produce,45,50
+28,Cauliflower,Fresh cauliflower,Produce,50,40
+29,Green Beans,Crisp green beans,Produce,30,60
+30,Strawberries,Fresh strawberries,Fruits,120,30
+31,Blueberries,Fresh blueberries,Fruits,150,20
+32,Oranges,Juicy oranges,Fruits,40,60
+33,Grapes,Sweet red grapes,Fruits,80,40
+34,Watermelon,Sweet watermelon,Fruits,100,10
+35,Pineapple,Fresh pineapple,Fruits,80,15
+36,Mango,Ripe mangoes,Fruits,60,25
+37,Avocado,Ripe avocados,Fruits,90,30
+38,Peach,Fresh peaches,Fruits,70,40
+39,Pear,Juicy pears,Fruits,60,50
+40,Lemon,Sour lemons,Fruits,20,70
