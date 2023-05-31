@@ -3,6 +3,8 @@ package com.example.library
 import com.example.library.data.PublicApiCategoriesResponse
 import com.example.library.data.PublicApiEntriesResponse
 import com.example.library.data.PublicApiEntry
+import com.example.library.data.PublicApiHealthResponse
+import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.util.LinkedMultiValueMap
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.util.UriComponentsBuilder
@@ -11,9 +13,14 @@ object PublicApiManager {
 
     private const val BASE_URL = "https://api.publicapis.org"
 
-    fun getCategories(): List<String> {
-        val response = callThirdPartyAPI<PublicApiCategoriesResponse>("$BASE_URL/categories")
-        return response?.categories.orEmpty()
+    fun getHealthReport(): PublicApiHealthResponse {
+        val healthReportString = callThirdPartyAPI<String>("$BASE_URL/health")
+        val objectMapper = ObjectMapper()
+        return objectMapper.readValue(healthReportString, PublicApiHealthResponse::class.java)
+    }
+
+    fun getCategories(): PublicApiCategoriesResponse? {
+        return callThirdPartyAPI<PublicApiCategoriesResponse>("$BASE_URL/categories")
     }
 
     fun getRandomEntry(
@@ -43,7 +50,7 @@ object PublicApiManager {
         https: Boolean? = null,
         cors: String? = null,
         category: String? = null
-    ): List<PublicApiEntry>? {
+    ): PublicApiEntriesResponse? {
         val queryParams: Map<String, Any?> = mapOf(
             "title" to title,
             "description" to description,
@@ -52,13 +59,7 @@ object PublicApiManager {
             "cors" to cors,
             "category" to category
         )
-        val response = callThirdPartyAPI<PublicApiEntriesResponse>("$BASE_URL/entries", queryParams)
-        return response?.entries
-    }
-
-    fun getHealthReport(): String? {
-        val response = callThirdPartyAPI<String>("$BASE_URL/health")
-        return response
+        return callThirdPartyAPI<PublicApiEntriesResponse>("$BASE_URL/entries", queryParams)
     }
 
     private inline fun <reified T : Any> callThirdPartyAPI(
@@ -71,6 +72,7 @@ object PublicApiManager {
         val restTemplate = RestTemplate()
         val uriBuilder = UriComponentsBuilder.fromUriString(url)
 
+        // Removing null values from query params, adding to URI after converting to MultiValueMap
         queryParams?.let {
             val nonNullParams = it.filterValues { value -> value != null }
             val modifiedParams = nonNullParams.mapValues { entry -> listOf(entry.value.toString()) }
