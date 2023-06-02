@@ -5,6 +5,7 @@ import com.example.library.data.PublicApiEntriesResponse
 import com.example.library.data.PublicApiEntry
 import com.example.library.data.PublicApiHealthResponse
 import com.fasterxml.jackson.databind.ObjectMapper
+import org.springframework.boot.web.client.RestTemplateBuilder
 import org.springframework.util.LinkedMultiValueMap
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.util.UriComponentsBuilder
@@ -15,7 +16,7 @@ object PublicApiManager {
 
     fun getHealthReport(): PublicApiHealthResponse {
         val healthReportString = callThirdPartyAPI<String>("$BASE_URL/health")
-        val objectMapper = ObjectMapper()
+        val objectMapper = ObjectMapper() // TODO: Use static instance
         return objectMapper.readValue(healthReportString, PublicApiHealthResponse::class.java)
     }
 
@@ -69,7 +70,18 @@ object PublicApiManager {
         println("PublicApiManager: " + "Calling API...")
         println("PublicApiManager: " + "Url = $url")
 
+        var builder = RestTemplateBuilder()
+        builder = builder.rootUri(BASE_URL)
+        builder = builder.defaultHeader("Accept", "application/json")
+        // TODO: Add timeout
+        // TODO: Add retry
+        // TODO: Add logging
+        // TODO: Add error handling
+        // TODO: Add caching
+        // TODO: No need to create new instance every time
+        // TODO: Explore other methods of builder
         val restTemplate = RestTemplate()
+
         val uriBuilder = UriComponentsBuilder.fromUriString(url)
 
         // Removing null values from query params, adding to URI after converting to MultiValueMap
